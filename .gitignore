@@ -1,0 +1,15 @@
+# Kişisel veri ve derleme artıkları — depoya girmez
+veri/
+yedek/
+cikti/
+build/
+dist/
+araclar/calisma/
+*.db
+*.db-shm
+*.db-wal
+*.log
+__pycache__/
+*.pyc
+*.exe
+*.apk

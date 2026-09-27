@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr" data-tema="gece">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ÜSTAD MUHASEBE · Tam Teşkilat Muhasebe Programı</title>
+<meta name="description" content="ÜSTAD MUHASEBE · cari, kasa, banka, fatura, stok, personel, raporlar, Word/Excel çıktı">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+<!-- ============================ GİRİŞ PERDESİ ============================ -->
+<div id="perde" class="perde">
+  <div class="perdeKart">
+    <div class="logoYer logoBuyuk" data-logo></div>
+    <h1 class="perdeBaslik">ÜSTAD MUHASEBE</h1>
+    <p class="perdeAlt">Tam Teşkilat Muhasebe Programı · v1.2</p>
+    <form id="girisForm" autocomplete="off">
+      <div class="alan">
+        <label for="kullaniciAdi">Kullanıcı</label>
+        <input id="kullaniciAdi" type="text" placeholder="kenan" autocomplete="off">
+      </div>
+      <div class="alan">
+        <label for="sifre">Şifre</label>
+        <input id="sifre" type="password" placeholder="••••••••" autocomplete="off">
+      </div>
+      <div id="girisHata" class="hata"></div>
+      <button class="dugme birincil tam" type="submit">Panele Gir</button>
+    </form>
+    <div class="perdeNot">
+      <span>USTA: <b>kenan / kenan1981</b></span><span>MİSAFİR: <b>misafir / misafir2026</b></span>
+    </div>
+    <div class="perdeAltNot">Deneme sürümü · 5 hatalı girişte 60 saniye kilit</div>
+  </div>
+</div>
+
+<!-- ============================ UYGULAMA ============================ -->
+<div id="uygulama" class="uygulama gizli">
+
+  <!-- ------------------------- YAN MENÜ ------------------------- -->
+  <aside id="yan" class="yan">
+    <div class="yanUst">
+      <div class="logoYer logoKucuk" data-logo></div>
+      <div class="yanFirma">
+        <div id="yanFirmaAd" class="yanFirmaAd">ÜSTAD MUHASEBE</div>
+        <div id="yanFirmaAlt" class="yanFirmaAlt">TAM TEŞKİLAT · ÜSTAD SALON KENAN</div>
+      </div>
+    </div>
+
+    <nav class="menu" id="menu">
+      <div class="menuGrup">YÖNETİM</div>
+      <button class="menuOge" data-ekran="genel"><span class="simge">&#9632;</span><span>Genel Bakış</span></button>
+      <button class="menuOge" data-ekran="cari"><span class="simge">&#9823;</span><span>Cari Yönetimi</span><b class="rozet" id="rozetCari">0</b></button>
+      <button class="menuOge" data-ekran="gorusme"><span class="simge">&#9993;</span><span>Görüşmeler</span></button>
+      <button class="menuOge" data-ekran="gorev"><span class="simge">&#10003;</span><span>Görevler</span><b class="rozet mor" id="rozetGorev">0</b></button>
+
+      <div class="menuGrup">SADE DEFTER (KURUMSAL DEĞİL)</div>
+      <button class="menuOge" data-ekran="harcama"><span class="simge">&#9878;</span><span>Harcamalar</span><b class="rozet" id="rozetHarcama">0</b></button>
+      <button class="menuOge" data-ekran="butce"><span class="simge">&#9673;</span><span>Bütçe</span></button>
+
+      <div class="menuGrup">PARA</div>
+      <button class="menuOge" data-ekran="gelir"><span class="simge">&#9650;</span><span>Gelirler</span></button>
+      <button class="menuOge" data-ekran="gider"><span class="simge">&#9660;</span><span>Giderler</span></button>
+      <button class="menuOge" data-ekran="kasa"><span class="simge">&#9679;</span><span>Kasa &amp; Bankalar</span></button>
+      <button class="menuOge" data-ekran="fatura"><span class="simge">&#9776;</span><span>Faturalar</span><b class="rozet" id="rozetFatura">0</b></button>
+      <button class="menuOge" data-ekran="cek"><span class="simge">&#10063;</span><span>Çek &amp; Senet</span><b class="rozet altin" id="rozetCek">0</b></button>
+      <button class="menuOge" data-ekran="tekrar"><span class="simge">&#8635;</span><span>Tekrarlayan &amp; Abonelik</span></button>
+
+      <div class="menuGrup">TİCARET</div>
+      <button class="menuOge" data-ekran="stok"><span class="simge">&#9635;</span><span>Stok Yönetimi</span></button>
+      <button class="menuOge" data-ekran="personel"><span class="simge">&#9787;</span><span>Personel &amp; Bordro</span></button>
+
+      <div class="menuGrup">ZEKÂ &amp; BELGE</div>
+      <button class="menuOge" data-ekran="ai"><span class="simge">&#10024;</span><span>Muhasebe Asistanı</span></button>
+      <button class="menuOge" data-ekran="fis"><span class="simge">&#128247;</span><span>Fiş &amp; Faturalar (foto)</span></button>
+
+      <div class="menuGrup">ÇIKTI</div>
+      <button class="menuOge" data-ekran="rapor"><span class="simge">&#9680;</span><span>Raporlar</span></button>
+      <button class="menuOge" data-ekran="cikti"><span class="simge">&#8681;</span><span>Word / Excel / PDF Çıktıları</span></button>
+      <button class="menuOge" data-ekran="ayarlar"><span class="simge">&#9881;</span><span>Ayarlar &amp; Yedek</span></button>
+    </nav>
+
+    <div class="yanAlt">
+      <div class="temaSatir" id="temaSatir">
+        <button class="temaDugme aktif" data-tema="gece" title="Gece — koyu lacivert"></button>
+        <button class="temaDugme" data-tema="gunduz" title="Gündüz — açık zemin"></button>
+        <button class="temaDugme" data-tema="altin" title="Altın — ÜSTAD altını"></button>
+        <button class="temaDugme" data-tema="lavanta" title="Lavanta — mor + fuşya"></button>
+        <button class="temaDugme" data-tema="okyanus" title="Okyanus — mavi + turkuaz"></button>
+        <button class="temaDugme" data-tema="orman" title="Orman — yeşil + lime"></button>
+        <button class="temaDugme" data-tema="gul" title="Gül — pembe + gül kurusu"></button>
+        <button class="temaDugme" data-tema="neon" title="Neon — turkuaz + mor + kırmızı"></button>
+        <button class="temaDugme" data-tema="kahve" title="Kahve — amber + kahve"></button>
+        <button class="temaDugme" data-tema="zumrut" title="Zümrüt — yeşil + lime"></button>
+        <button class="temaDugme" data-tema="kuzey" title="Kuzey — kutup mavisi"></button>
+        <button class="temaDugme" data-tema="limon" title="Limon — lime + sarı"></button>
+        <button class="temaDugme" data-tema="bordo" title="Bordo — şarap kırmızısı"></button>
+      </div>
+      <div class="paletSatir" id="paletSatir">
+        <button class="paletDugme aktif" data-palet="tatli" title="Tatlı palet (turkuaz · pembe · altın)" style="--a:#22d3ee;--b:#f472b6;--c:#fbbf24"></button>
+        <button class="paletDugme" data-palet="canli" title="Canlı palet (fuşya · sarı · yeşil)" style="--a:#ff5fa2;--b:#ffd166;--c:#06d6a0"></button>
+        <button class="paletDugme" data-palet="pastel" title="Pastel palet (yumuşak tonlar)" style="--a:#7dd3fc;--b:#fbcfe8;--c:#fde68a"></button>
+        <button class="paletDugme" data-palet="sicak" title="Sıcak palet (turuncu · kırmızı)" style="--a:#ff8a4c;--b:#ff6b6b;--c:#ffd24c"></button>
+        <button class="paletDugme" data-palet="kuzey" title="Kuzey paleti (mavi · lila)" style="--a:#60a5fa;--b:#a5b4fc;--c:#e0e7ff"></button>
+        <button class="paletDugme" data-palet="zumrut" title="Zümrüt paleti (yeşil · lime)" style="--a:#10b981;--b:#34d399;--c:#a3e635"></button>
+      </div>
+      <div class="kartNot" style="text-align:center;font-size:10.5px;margin-bottom:4px">13 TEMA · 6 PALET = 78 RENK DÜZENİ</div>
+      <div class="yanSurum" id="yanSurum">v1.2.0 · bağlanıyor…</div>
+    </div>
+  </aside>
+
+  <!-- ------------------------- ANA ALAN ------------------------- -->
+  <main class="ana">
+    <header class="ust">
+      <div class="ustSol">
+        <button class="menuDugme" id="menuDugme" title="Menüyü aç/kapat">&#9776;</button>
+        <h2 id="ekranBaslik" class="ekranBaslik">Genel Bakış</h2>
+        <span id="ekranAlt" class="ekranAlt"></span>
+      </div>
+      <div class="ustSag">
+        <div class="aramaKutu">
+          <span class="aramaSimge">&#9906;</span>
+          <input id="arama" type="text" placeholder="Müşteri, ürün, fatura, işlem ara…">
+        </div>
+        <button class="dugme can" id="canDugme" title="Uyarılar — vadesi geçen çek/fatura, bütçe aşımı">
+          <span>&#128276;</span><b class="canRozet" id="canRozet">0</b>
+        </button>
+        <button class="dugme" id="hizliExcel" title="Bu ekranı Excel'e aktar">Excel</button>
+        <button class="dugme" id="hizliWord" title="Bu ekranı Word'e aktar">Word</button>
+        <button class="dugme altinDugme" id="hizliPdf" title="Bu ekranı PDF olarak indir (Word üzerinden gerçek PDF)">PDF</button>
+        <span class="tarihKutu" id="ustTarih"></span>
+      </div>
+    </header>
+    <section id="icerik" class="icerik"></section>
+  </main>
+</div>
+
+<!-- ============================ MODAL ============================ -->
+<div id="modal" class="modalPerde gizli">
+  <div class="modalKutu">
+    <div class="modalUst">
+      <h3 id="modalBaslik">Kayıt</h3>
+      <button class="kapat" id="modalKapat">&#10005;</button>
+    </div>
+    <div id="modalGovde" class="modalGovde"></div>
+    <div id="modalAlt" class="modalAlt"></div>
+  </div>
+</div>
+
+<div id="bildirim" class="bildirim gizli"></div>
+
+<script src="uygulama.js"></script>
+</body>
+</html>
